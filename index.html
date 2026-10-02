@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude Code Toolkit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero__eyebrow">Огляд екосистеми · жовтень 2026</div>
+    <h1>Інструменти для <span>Claude&nbsp;Code</span></h1>
+    <p>Плагіни, скіли, MCP-сервери, агенти, хуки й правила, розкладені по групах. Тут є база, якою користуються майже всі, лідери за кількістю встановлень і маловідомі інструменти, що дуже заощаджують час. Наприкінці є роудмапи вивчення та шпаргалки.</p>
+    <div class="legend">
+      <span class="badge badge--base">База: у кожного</span>
+      <span class="badge badge--top">Топ: найпопулярніше</span>
+      <span class="badge badge--gem">Скарб: мало хто знає</span>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="wrap">
+    <ul>
+      <li><a href="#top">Топ-10</a></li>
+      <li><a href="#base">База</a></li>
+      <li><a href="#plugins">Плагіни і скіли</a></li>
+      <li><a href="#mcp">MCP</a></li>
+      <li><a href="#agents">Агенти</a></li>
+      <li><a href="#hooks">Хуки і правила</a></li>
+      <li><a href="#gems">Приховані скарби</a></li>
+      <li><a href="#roadmaps">Роудмапи</a></li>
+      <li><a href="#cheats">Шпаргалки</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ================= TOP 10 ================= -->
+  <section class="section" id="top">
+    <div class="section__head"><span class="section__num">01</span><h2>Топ-10 плагінів за встановленнями</h2></div>
+    <p class="section__lead">Рейтинг за даними маркетплейсів (vibecoding.app, 2026). Лише два плагіни перейшли позначку в мільйон: frontend-design і Superpowers. На них двох припадає майже чверть усіх встановлень.</p>
+    <ol class="board">
+      <li><strong>frontend-design</strong><div class="board__bar"><span style="--w:100%"></span></div><span class="board__num">1.13M</span><span class="board__desc">Прибирає типовий «AI-generated» вигляд інтерфейсів: дає сміливу типографіку, палітри й композицію.</span></li>
+      <li><strong>superpowers</strong><div class="board__bar"><span style="--w:89%"></span></div><span class="board__num">1.01M</span><span class="board__desc">Процесні скіли: brainstorming, планування, TDD, debugging і subagent-driven розробка.</span></li>
+      <li><strong>code-review</strong><div class="board__bar"><span style="--w:39%"></span></div><span class="board__num">438K</span><span class="board__desc">Автоматичне рев'ю диффу або PR кількома агентами-рецензентами.</span></li>
+      <li><strong>context7</strong><div class="board__bar"><span style="--w:37%"></span></div><span class="board__num">417K</span><span class="board__desc">Підтягує актуальну документацію бібліотек під конкретну версію.</span></li>
+      <li><strong>skill-creator</strong><div class="board__bar"><span style="--w:34%"></span></div><span class="board__num">385K</span><span class="board__desc">Перетворює виправлення, які ви повторюєте, на скіли для повторного використання, і тестує їх.</span></li>
+      <li><strong>code-simplifier</strong><div class="board__bar"><span style="--w:31%"></span></div><span class="board__num">346K</span><span class="board__desc">Прибирає зайві абстракції після довгих агентних сесій.</span></li>
+      <li><strong>playwright</strong><div class="board__bar"><span style="--w:28%"></span></div><span class="board__num">319K</span><span class="board__desc">Керування браузером: кліки, форми, скріншоти й E2E-перевірки.</span></li>
+      <li><strong>github</strong><div class="board__bar"><span style="--w:28%"></span></div><span class="board__num">319K</span><span class="board__desc">PR, issues та CI просто з сесії.</span></li>
+      <li><strong>claude-md-management</strong><div class="board__bar"><span style="--w:25%"></span></div><span class="board__num">287K</span><span class="board__desc">Підтримує CLAUDE.md актуальним і узгодженим із кодом.</span></li>
+      <li><strong>feature-dev</strong><div class="board__bar"><span style="--w:23%"></span></div><span class="board__num">256K</span><span class="board__desc">Структурований цикл фічі: дослідження → архітектура → реалізація → рев'ю.</span></li>
+    </ol>
+  </section>
+
+  <!-- ================= BASE ================= -->
+  <section class="section" id="base">
+    <div class="section__head"><span class="section__num">02</span><h2>База: що вмикає кожен</h2></div>
+    <p class="section__lead">Ці речі вбудовані в Claude Code або є стандартом де-факто. Без них решта інструментів працює гірше.</p>
+    <div class="grid">
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Пам'ять</span><span class="badge badge--base">База</span></div>
+        <h3>CLAUDE.md</h3>
+        <p>Інструкції проєкту, які Claude читає на старті кожної сесії: стек, команди збірки, конвенції, заборони. Створюється командою <code>/init</code>.</p>
+        <div class="card__meta">./CLAUDE.md · ~/.claude/CLAUDE.md</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Режим</span><span class="badge badge--base">База</span></div>
+        <h3>Plan Mode</h3>
+        <p>Claude спершу досліджує код і пропонує план, нічого не змінюючи. Якщо добре відшліфувати план, реалізація часто виходить з першої спроби.</p>
+        <div class="card__meta"><kbd>Shift</kbd>+<kbd>Tab</kbd> · перемикання режимів</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Контекст</span><span class="badge badge--base">База</span></div>
+        <h3>/context · /clear · /compact</h3>
+        <p>Показують, що займає вікно контексту, очищують його та стискають історію. Тримати контекст «чистим» — головна навичка.</p>
+        <div class="card__meta">/context → аудит токенів</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Безпека</span><span class="badge badge--base">База</span></div>
+        <h3>Permissions у settings.json</h3>
+        <p>Allow- і deny-списки для команд та інструментів. Безпечні команди проходять без зайвих підтверджень, а небезпечні заблоковано.</p>
+        <div class="card__meta">.claude/settings.json · /permissions</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">MCP</span><span class="badge badge--top">Топ</span></div>
+        <h3>Context7</h3>
+        <p>Свіжа документація під версію вашої бібліотеки, тож модель не вигадує неіснуючих API.</p>
+        <div class="card__meta">/plugin install context7</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">MCP</span><span class="badge badge--top">Топ</span></div>
+        <h3>GitHub</h3>
+        <p>Робота з репозиторіями, PR, issues, CI. Альтернатива без MCP: CLI <code>gh</code>, який Claude чудово використовує сам.</p>
+        <div class="card__meta">/plugin install github</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Навігація</span><span class="badge badge--base">База</span></div>
+        <h3>@файли та !команди</h3>
+        <p><code>@src/App.tsx</code> додає файл у контекст, а <code>! npm test</code> запускає команду й передає вивід у розмову.</p>
+        <div class="card__meta">@ · ! · Esc Esc (rewind)</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Сесії</span><span class="badge badge--base">База</span></div>
+        <h3>/resume і claude -c</h3>
+        <p>Повернення до попередніх розмов. Знадобиться, щоб продовжити довгу задачу завтра з тим самим контекстом.</p>
+        <div class="card__meta">claude --continue · /resume</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= PLUGINS & SKILLS ================= -->
+  <section class="section" id="plugins">
+    <div class="section__head"><span class="section__num">03</span><h2>Плагіни і скіли</h2></div>
+    <p class="section__lead"><b>Скіл</b> — це папка з <code>SKILL.md</code> та інструкціями, які підвантажуються лише тоді, коли потрібні. <b>Плагін</b> — це пакет, у якому можуть бути скіли, агенти, хуки, команди та MCP. Встановлюється через <code>/plugin</code>.</p>
+
+    <h3 class="group-title">Процес і якість</h3>
+    <div class="grid">
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Плагін</span><span class="badge badge--top">Топ</span></div>
+        <h3>Superpowers</h3>
+        <p>brainstorming → writing-plans → TDD → systematic-debugging → verification. Дисциплінує агента працювати як сеньйор.</p>
+        <div class="card__meta">obra/superpowers</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Плагін</span><span class="badge badge--top">Топ</span></div>
+        <h3>feature-dev</h3>
+        <p>Офіційний флоу фічі з агентами code-explorer, code-architect і code-reviewer.</p>
+        <div class="card__meta">claude-plugins-official</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Плагін</span><span class="badge badge--top">Топ</span></div>
+        <h3>code-review · code-simplifier</h3>
+        <p>Перший шукає баги в диффі, другий прибирає «агентний» надлишок коду. Добре працюють у парі перед комітом.</p>
+        <div class="card__meta">/code-review · /simplify</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Скіл</span><span class="badge badge--base">База</span></div>
+        <h3>security-review</h3>
+        <p>Вбудована перевірка змін на гілці: інʼєкції, секрети в коді, небезпечні залежності.</p>
+        <div class="card__meta">/security-review</div>
+      </article>
+    </div>
+
+    <h3 class="group-title">Фронтенд і дизайн</h3>
+    <div class="grid">
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Скіл</span><span class="badge badge--top">Топ</span></div>
+        <h3>frontend-design</h3>
+        <p>Найпопулярніший скіл. Задає естетичний напрям, типографіку, кольори й motion, щоб UI не виглядав шаблонним.</p>
+        <div class="card__meta">anthropics/skills</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">MCP</span><span class="badge badge--base">База</span></div>
+        <h3>Figma Dev Mode</h3>
+        <p>Читає макети, токени й компоненти з Figma і генерує з них код, близький до дизайну.</p>
+        <div class="card__meta">Figma MCP · ~10 хв налаштування</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Скіл</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>webapp-testing</h3>
+        <p>Офіційний скіл Anthropic: запускає локальний сервер і перевіряє UI через Playwright. Мало хто знає, що він є.</p>
+        <div class="card__meta">anthropics/skills</div>
+      </article>
+    </div>
+
+    <h3 class="group-title">Метаінструменти</h3>
+    <div class="grid">
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Скіл</span><span class="badge badge--top">Топ</span></div>
+        <h3>skill-creator</h3>
+        <p>Створює власні скіли, пише для них евали й оптимізує опис, щоб скіл спрацьовував вчасно.</p>
+        <div class="card__meta">anthropics/skills</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Плагін</span><span class="badge badge--top">Топ</span></div>
+        <h3>claude-md-management</h3>
+        <p>Аудитує CLAUDE.md і пропонує оновлення, коли проєкт змінився.</p>
+        <div class="card__meta">claude-plugins-official</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Скіли</span><span class="badge badge--base">База</span></div>
+        <h3>docx · xlsx · pptx · pdf</h3>
+        <p>Офіційні скіли для роботи з документами: читання, створення та редагування офісних файлів.</p>
+        <div class="card__meta">anthropics/skills</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= MCP ================= -->
+  <section class="section" id="mcp">
+    <div class="section__head"><span class="section__num">04</span><h2>MCP-сервери</h2></div>
+    <p class="section__lead">MCP (Model Context Protocol) підключає зовнішні інструменти. Порада зі спільноти: якщо ставити лише п'ять, то це Context7, GitHub, Playwright, файлова система і один сервер під ваш стек. Кожен сервер займає контекст, тож не вмикайте зайвих.</p>
+    <div class="grid">
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Браузер</span><span class="badge badge--top">Топ</span></div>
+        <h3>Playwright MCP</h3>
+        <p>Найвживаніший сервер у спільноті. Claude сам відкриває сторінку, клікає й перевіряє свій UI.</p>
+        <div class="card__meta">microsoft/playwright-mcp</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Браузер</span><span class="badge badge--top">Топ</span></div>
+        <h3>Chrome DevTools MCP</h3>
+        <p>Debugging у справжньому Chrome: консоль, мережа, performance-трейси й Lighthouse.</p>
+        <div class="card__meta">ChromeDevTools/chrome-devtools-mcp</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Код</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>Serena</h3>
+        <p>Семантична навігація на основі LSP: пошук символів, посилань і рефакторинг. Claude Code не індексує кодову базу, і Serena закриває цю прогалину.</p>
+        <div class="card__meta">oraios/serena · MIT</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Дані</span><span class="badge badge--base">База</span></div>
+        <h3>PostgreSQL / Supabase</h3>
+        <p>Інтроспекція схеми й запити до живої БД. Для безпеки вмикайте режим read-only.</p>
+        <div class="card__meta">~5 хв налаштування</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Веб</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>Firecrawl</h3>
+        <p>Скрейпінг і пошук у вебі з чистим markdown на виході. Корисний для ресерчу документації.</p>
+        <div class="card__meta">firecrawl/firecrawl-mcp-server</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Мислення</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>Sequential Thinking</h3>
+        <p>Покрокове структуроване міркування. Найкраще працює в парі з Serena на складних рефакторингах.</p>
+        <div class="card__meta">modelcontextprotocol/servers</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Деплой</span><span class="badge badge--base">База</span></div>
+        <h3>Vercel · Sentry · Linear</h3>
+        <p>Деплої, помилки з продакшену й задачі команди, доступні прямо з терміналу.</p>
+        <div class="card__meta">офіційні remote MCP</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= AGENTS ================= -->
+  <section class="section" id="agents">
+    <div class="section__head"><span class="section__num">05</span><h2>Агенти (subagents)</h2></div>
+    <p class="section__lead">Субагент працює з окремим контекстом, власним system prompt і набором інструментів. Він ізолює важку роботу від головної сесії. Типова помилка — роздрібнювати все на агентів: задачу, яка вимагає глибокого розуміння коду, краще лишити в головній сесії.</p>
+    <div class="grid">
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Вбудований</span><span class="badge badge--base">База</span></div>
+        <h3>Explore · Plan</h3>
+        <p>Explore робить швидкий пошук по кодовій базі тільки на читання. Plan проєктує план реалізації.</p>
+        <div class="card__meta">вбудовані в Claude Code</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Свій</span><span class="badge badge--base">База</span></div>
+        <h3>code-reviewer</h3>
+        <p>Найпопулярніший власний агент. Має лише права на читання й перевіряє код після кожної фічі.</p>
+        <div class="card__meta">.claude/agents/code-reviewer.md</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Свій</span><span class="badge badge--base">База</span></div>
+        <h3>test-runner · debugger</h3>
+        <p>Запускає тести й повертає лише суть помилок, а не тисячі рядків логів.</p>
+        <div class="card__meta">/agents → Create new</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Колекція</span><span class="badge badge--top">Топ</span></div>
+        <h3>wshobson/agents</h3>
+        <p>Велика колекція готових спеціалістів: backend, frontend, DevOps, security тощо.</p>
+        <div class="card__meta">github.com/wshobson/agents</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Патерн</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>Архітектор → Dev → Критик</h3>
+        <p>Тріо агентів, де критик тільки читає код і виносить вердикт. Такий самоконтроль ловить хиби до того, як вони закріпляться в коді.</p>
+        <div class="card__meta">як у вашому .claude/agents</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Паралельність</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>Git worktrees</h3>
+        <p>Кілька сесій Claude паралельно, кожна у своїй копії репозиторію, без конфліктів.</p>
+        <div class="card__meta">claude --worktree · git worktree add</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= HOOKS & RULES ================= -->
+  <section class="section" id="hooks">
+    <div class="section__head"><span class="section__num">06</span><h2>Хуки і правила</h2></div>
+    <p class="section__lead">Хуки — одна з найбільш недооцінених можливостей. Їх виконує сам harness, а не модель, тому вони спрацьовують <b>гарантовано</b>. Правила в CLAUDE.md модель лише «бере до уваги».</p>
+    <div class="grid">
+      <article class="card">
+        <div class="card__top"><span class="card__kind">PostToolUse</span><span class="badge badge--base">База</span></div>
+        <h3>Автоформатування</h3>
+        <p>Після кожного Edit/Write запускаються Prettier і ESLint <code>--fix</code>, тож код завжди в стилі проєкту.</p>
+        <div class="card__meta">matcher: "Edit|Write"</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">PreToolUse</span><span class="badge badge--base">База</span></div>
+        <h3>Захисні блокування</h3>
+        <p>Блокують <code>rm -rf</code>, push у main і редагування <code>.env</code>. Хук повертає exit code 2, і дія скасовується.</p>
+        <div class="card__meta">exit 2 = block</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Stop / Notification</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>Сповіщення</h3>
+        <p>Звук або toast, коли Claude закінчив чи чекає на вас. Можна піти по каву.</p>
+        <div class="card__meta">"Stop": [...]</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">SessionStart</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>Динамічний контекст</h3>
+        <p>На старті сесії підкладає git status, відкриті задачі або дату. Так працює автоактивація Superpowers.</p>
+        <div class="card__meta">additionalContext</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Правила</span><span class="badge badge--base">База</span></div>
+        <h3>Ієрархія CLAUDE.md</h3>
+        <p>Глобальний <code>~/.claude/CLAUDE.md</code> → проєктний → вкладені в підпапках. Тримайте файли короткими: кожен рядок займає контекст.</p>
+        <div class="card__meta">/memory · /init</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Правила</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>Slash-команди як промпти</h3>
+        <p>Власні команди в <code>.claude/commands/*.md</code> — це шаблони user-промптів, які модель сприймає з вищим пріоритетом, ніж system prompt.</p>
+        <div class="card__meta">$ARGUMENTS · frontmatter</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= GEMS ================= -->
+  <section class="section" id="gems">
+    <div class="section__head"><span class="section__num">07</span><h2>Приховані скарби</h2></div>
+    <p class="section__lead">Про ці інструменти пишуть рідко, але ті, хто їх спробував, зазвичай уже не відмовляються.</p>
+    <div class="grid">
+      <article class="card">
+        <div class="card__top"><span class="card__kind">CLI</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>ccusage</h3>
+        <p>Аналізує локальні логи: скільки токенів і грошей пішло по днях, сесіях і 5-годинних блоках.</p>
+        <div class="card__meta">npx ccusage@latest</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Statusline</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>ccstatusline</h3>
+        <p>Красивий statusline з модельлю, гілкою, заповненістю контексту й вартістю в реальному часі. Підтримує powerline і теми.</p>
+        <div class="card__meta">npx ccstatusline@latest</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Оркестрація</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>claude-squad</h3>
+        <p>TUI для керування кількома агентами (Claude Code, Codex, Aider), кожен у своєму worktree.</p>
+        <div class="card__meta">smtg-ai/claude-squad</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Пам'ять</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>claude-mem</h3>
+        <p>Автоматично записує, що робив Claude, стискає це й підкладає релевантний контекст у наступні сесії.</p>
+        <div class="card__meta">thedotmack/claude-mem</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Хук</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>tdd-guard</h3>
+        <p>Хук, який не дає писати реалізацію, доки немає тесту, що падає. Справжній TDD без поступок.</p>
+        <div class="card__meta">nizos/tdd-guard</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Токени</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>Caveman · CodeBurn</h3>
+        <p>Caveman стискає вихідні токени в середньому на ~65%. CodeBurn локально рахує витрати в 40+ інструментах.</p>
+        <div class="card__meta">npx codeburn</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Контекст</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>Repomix</h3>
+        <p>Пакує весь репозиторій або його частину в один файл, зручний для AI. Знадобиться для аналізу чужого коду.</p>
+        <div class="card__meta">npx repomix</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Вбудоване</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>Esc Esc / rewind</h3>
+        <p>Відкат розмови <i>і</i> змін у файлах до будь-якої попередньої точки. Це безпечна «машина часу» для експериментів.</p>
+        <div class="card__meta">/rewind</div>
+      </article>
+      <article class="card">
+        <div class="card__top"><span class="card__kind">Headless</span><span class="badge badge--gem">Скарб</span></div>
+        <h3>claude -p у скриптах і CI</h3>
+        <p>Неінтерактивний режим для пайплайнів: генерувати changelog, перекладати, рев'юїти PR у GitHub Actions.</p>
+        <div class="card__meta">claude -p "..." --output-format json</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= ROADMAPS ================= -->
+  <section class="section" id="roadmaps">
+    <div class="section__head"><span class="section__num">08</span><h2>Роудмапи вивчення</h2></div>
+    <p class="section__lead">Чотири траєкторії: від першого запуску до автономних агентів у CI. Проходьте послідовно, бо кожен етап спирається на попередній.</p>
+    <div class="roadmaps">
+
+      <article class="roadmap roadmap--1">
+        <h3>🌱 Старт</h3>
+        <p class="roadmap__sub">1–2 тижні · перші результати</p>
+        <ol class="steps">
+          <li><small>Крок 1</small><b>Встановлення і /init</b><span>Згенеруйте CLAUDE.md і відредагуйте його вручну: стек, команди, заборони.</span></li>
+          <li><small>Крок 2</small><b>Режими і Plan Mode</b><span>Shift+Tab. Звикніть спершу планувати, а потім кодити.</span></li>
+          <li><small>Крок 3</small><b>@файли, !команди, Esc Esc</b><span>Точково передавайте контекст, а якщо щось пішло не так, відкочуйтеся.</span></li>
+          <li><small>Крок 4</small><b>Гігієна контексту</b><span>/context, /clear між задачами, /compact у довгих сесіях.</span></li>
+          <li><small>Крок 5</small><b>Permissions</b><span>Дозвольте безпечні команди в settings.json, щоб підтвердження не перебивали роботу.</span></li>
+        </ol>
+      </article>
+
+      <article class="roadmap roadmap--2">
+        <h3>🔧 Кастомізація</h3>
+        <p class="roadmap__sub">2–4 тижні · свій тулкіт</p>
+        <ol class="steps">
+          <li><small>Крок 1</small><b>Перші плагіни</b><span>/plugin: frontend-design, context7, code-review.</span></li>
+          <li><small>Крок 2</small><b>Перші MCP</b><span>Playwright і GitHub. Подивіться через /mcp, скільки контексту вони займають.</span></li>
+          <li><small>Крок 3</small><b>Власні slash-команди</b><span>Винесіть промпти, які ви повторюєте, у .claude/commands/.</span></li>
+          <li><small>Крок 4</small><b>Перший хук</b><span>Prettier на PostToolUse і сповіщення на Stop.</span></li>
+          <li><small>Крок 5</small><b>Statusline і ccusage</b><span>Слідкуйте за контекстом і витратами.</span></li>
+        </ol>
+      </article>
+
+      <article class="roadmap roadmap--3">
+        <h3>🤖 Агенти та скіли</h3>
+        <p class="roadmap__sub">1–2 місяці · делегування</p>
+        <ol class="steps">
+          <li><small>Крок 1</small><b>Superpowers-процес</b><span>brainstorm → plan → TDD → verify як щоденний ритм.</span></li>
+          <li><small>Крок 2</small><b>Перший субагент</b><span>code-reviewer тільки з правами на читання через /agents.</span></li>
+          <li><small>Крок 3</small><b>Власний скіл</b><span>За допомогою skill-creator з евалами перетворіть повторювані виправлення на скіл.</span></li>
+          <li><small>Крок 4</small><b>Мультиагентні патерни</b><span>Архітектор, розробник і критик. Ізоляція контексту.</span></li>
+          <li><small>Крок 5</small><b>Worktrees</b><span>Паралельні сесії над різними фічами.</span></li>
+        </ol>
+      </article>
+
+      <article class="roadmap roadmap--4">
+        <h3>🚀 Автоматизація</h3>
+        <p class="roadmap__sub">постійно · рівень команди</p>
+        <ol class="steps">
+          <li><small>Крок 1</small><b>Headless claude -p</b><span>Скрипти з JSON-виводом.</span></li>
+          <li><small>Крок 2</small><b>GitHub Actions</b><span>Автоматичне рев'ю PR і виправлення через @claude у коментарях.</span></li>
+          <li><small>Крок 3</small><b>Свій плагін або маркетплейс</b><span>Поширте скіли, агентів і хуки на всю команду.</span></li>
+          <li><small>Крок 4</small><b>Власний MCP-сервер</b><span>Підключіть внутрішні API компанії (TypeScript SDK).</span></li>
+          <li><small>Крок 5</small><b>Agent SDK</b><span>Власні агенти на тому самому рушії, що й Claude Code.</span></li>
+        </ol>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= CHEAT SHEETS ================= -->
+  <section class="section" id="cheats">
+    <div class="section__head"><span class="section__num">09</span><h2>Шпаргалки</h2></div>
+    <p class="section__lead">Найпотрібніше на одному екрані. Повний список: <code>/help</code> і документація Anthropic.</p>
+    <div class="sheets">
+
+      <div class="sheet">
+        <div class="sheet__head">Slash-команди</div>
+        <table>
+          <tr><td>/init</td><td>Створити CLAUDE.md з аналізу проєкту</td></tr>
+          <tr><td>/context</td><td>Що займає вікно контексту</td></tr>
+          <tr><td>/clear</td><td>Нова розмова з чистим контекстом</td></tr>
+          <tr><td>/compact [фокус]</td><td>Стиснути історію</td></tr>
+          <tr><td>/resume</td><td>Повернутися до старої сесії</td></tr>
+          <tr><td>/rewind</td><td>Відкотити розмову і код</td></tr>
+          <tr><td>/plugin</td><td>Маркетплейси і встановлення</td></tr>
+          <tr><td>/mcp</td><td>Статус MCP-серверів</td></tr>
+          <tr><td>/agents</td><td>Створити або редагувати субагентів</td></tr>
+          <tr><td>/hooks</td><td>Налаштувати хуки</td></tr>
+          <tr><td>/memory</td><td>Редагувати CLAUDE.md</td></tr>
+          <tr><td>/model</td><td>Змінити модель</td></tr>
+          <tr><td>/code-review</td><td>Рев'ю поточного диффу</td></tr>
+        </table>
+      </div>
+
+      <div class="sheet">
+        <div class="sheet__head">Клавіші та префікси</div>
+        <table>
+          <tr><td><kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Цикл режимів: normal → auto-accept → plan</td></tr>
+          <tr><td><kbd>Esc</kbd></td><td>Зупинити Claude</td></tr>
+          <tr><td><kbd>Esc</kbd> <kbd>Esc</kbd></td><td>Rewind до попереднього повідомлення</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>C</kbd></td><td>Скасувати ввід або вийти</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>R</kbd></td><td>Пошук в історії промптів</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>V</kbd></td><td>Вставити зображення або скріншот</td></tr>
+          <tr><td>@шлях</td><td>Додати файл або папку в контекст</td></tr>
+          <tr><td>! команда</td><td>Виконати shell-команду і передати вивід у розмову</td></tr>
+          <tr><td>/команда</td><td>Slash-команда або скіл</td></tr>
+          <tr><td>\ + Enter</td><td>Новий рядок у промпті</td></tr>
+        </table>
+      </div>
+
+      <div class="sheet">
+        <div class="sheet__head">CLI-прапорці</div>
+        <table>
+          <tr><td>claude</td><td>Інтерактивна сесія</td></tr>
+          <tr><td>claude "задача"</td><td>Почати одразу з промптом</td></tr>
+          <tr><td>claude -c</td><td>Продовжити останню сесію</td></tr>
+          <tr><td>claude -r</td><td>Вибрати сесію для відновлення</td></tr>
+          <tr><td>claude -p "..."</td><td>Headless: відповідь у stdout</td></tr>
+          <tr><td>--output-format json</td><td>Структурований вивід для скриптів</td></tr>
+          <tr><td>--model &lt;id&gt;</td><td>Модель для сесії</td></tr>
+          <tr><td>--add-dir ../lib</td><td>Додатковий робочий каталог</td></tr>
+          <tr><td>claude mcp add</td><td>Додати MCP-сервер</td></tr>
+          <tr><td>claude update</td><td>Оновити Claude Code</td></tr>
+        </table>
+      </div>
+
+      <div class="sheet">
+        <div class="sheet__head">Структура .claude/</div>
+<pre><span class="k">project/</span>
+├── CLAUDE.md              <span class="c"># інструкції проєкту</span>
+├── .mcp.json              <span class="c"># MCP для команди</span>
+└── <span class="k">.claude/</span>
+    ├── settings.json      <span class="c"># спільні налаштування</span>
+    ├── settings.local.json<span class="c"> # особисті, у .gitignore</span>
+    ├── <span class="k">agents/</span>            <span class="c"># субагенти *.md</span>
+    ├── <span class="k">commands/</span>          <span class="c"># slash-команди *.md</span>
+    └── <span class="k">skills/</span>
+        └── my-skill/
+            └── SKILL.md   <span class="c"># name + description</span>
+
+<span class="k">~/.claude/</span>                 <span class="c"># те саме, але глобально</span></pre>
+      </div>
+
+      <div class="sheet">
+        <div class="sheet__head">Хук: Prettier після редагування</div>
+<pre><span class="c">// .claude/settings.json</span>
+{
+  <span class="k">"hooks"</span>: {
+    <span class="k">"PostToolUse"</span>: [{
+      <span class="k">"matcher"</span>: "Edit|Write",
+      <span class="k">"hooks"</span>: [{
+        <span class="k">"type"</span>: "command",
+        <span class="k">"command"</span>: "jq -r '.tool_input.file_path' | xargs npx prettier --write"
+      }]
+    }]
+  }
+}</pre>
+      </div>
+
+      <div class="sheet">
+        <div class="sheet__head">Субагент: шаблон</div>
+<pre><span class="c">&lt;!-- .claude/agents/reviewer.md --&gt;</span>
+---
+<span class="k">name</span>: reviewer
+<span class="k">description</span>: Рев'ю коду після змін.
+  Використовуй проактивно.
+<span class="k">tools</span>: Read, Grep, Glob
+<span class="k">model</span>: sonnet
+---
+Ти senior-рецензент. Перевір
+коректність, типи, edge-кейси.
+Тільки читай, не редагуй.
+Поверни список проблем за пріоритетом.</pre>
+      </div>
+
+      <div class="sheet">
+        <div class="sheet__head">Скіл: шаблон SKILL.md</div>
+<pre>---
+<span class="k">name</span>: react-component
+<span class="k">description</span>: Use when creating a React
+  component — enforces TS props, CSS modules
+---
+<span class="c"># React Component</span>
+1. Типи пропсів через interface
+2. Стилі в Component.module.css
+3. Без default export
+4. Тест поруч: Component.test.tsx</pre>
+      </div>
+
+      <div class="sheet">
+        <div class="sheet__head">MCP і плагіни: команди</div>
+<pre><span class="c"># MCP через CLI</span>
+claude mcp add playwright -- npx @playwright/mcp@latest
+claude mcp add --transport http github \
+  https://api.githubcopilot.com/mcp/
+claude mcp list
+claude mcp remove playwright
+
+<span class="c"># Плагіни (у сесії)</span>
+/plugin marketplace add obra/superpowers-marketplace
+/plugin install superpowers@superpowers-marketplace
+/plugin                    <span class="c"># UI: увімкнути/вимкнути</span></pre>
+      </div>
+
+      <div class="sheet sheet--wide">
+        <div class="sheet__head">Шаблон хорошого CLAUDE.md</div>
+<pre><span class="c"># Project</span>
+React 19 + TypeScript + Vite. Стилі: CSS Modules.
+
+<span class="c">## Commands</span>
+- `npm run dev`   — dev-сервер
+- `npm test`      — Vitest
+- `npm run lint`  — ESLint, обов'язково перед комітом
+
+<span class="c">## Conventions</span>
+- Лише .ts/.tsx і .css, без .js
+- Компоненти: named export, props через interface
+- Стан: локальний useState → Context; без Redux
+
+<span class="c">## Don't</span>
+- Не чіпати src/generated/
+- Не додавати залежності без питання</pre>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p><b>Джерела</b> (дані станом на 2026):</p>
+    <ul>
+      <li><a href="https://vibecoding.app/blog/best-claude-code-plugins">vibecoding.app: Best Claude Code Plugins 2026 (рейтинг встановлень)</a></li>
+      <li><a href="https://composio.dev/content/top-claude-code-plugins">Composio: Top Claude Code Plugins</a></li>
+      <li><a href="https://github.com/ccplugins/awesome-claude-code-plugins">ccplugins/awesome-claude-code-plugins</a> · <a href="https://github.com/jqueryscript/awesome-claude-code">jqueryscript/awesome-claude-code</a></li>
+      <li><a href="https://www.totalum.app/blog/best-mcp-servers-2026">Totalum: Best MCP Servers 2026</a> · <a href="https://mcp.directory/blog/serena-mcp-complete-guide-2026">Serena MCP Guide</a></li>
+      <li><a href="https://github.com/microsoft/playwright-mcp">microsoft/playwright-mcp</a> · <a href="https://github.com/sirmalloc/ccstatusline">sirmalloc/ccstatusline</a></li>
+      <li><a href="https://dev.to/oikon/24-claude-code-tips-claudecodeadventcalendar-52b5">24 Claude Code Tips (DEV)</a> · <a href="https://docs.anthropic.com/en/docs/claude-code/subagents">Anthropic Docs: Subagents</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
